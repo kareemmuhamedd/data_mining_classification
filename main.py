@@ -4,6 +4,8 @@ from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
 from classifier_functions import *
 from utils import *
+from sklearn import tree
+import graphviz
 
 
 def draw_the_most_important_feature(best_one, colors='viridis'):
@@ -107,8 +109,6 @@ if __name__ == '__main__':
 
     # Use this code to draw the decision tree and save it in tree.png
     F=list(features)
-    from sklearn import tree
-    import graphviz
     dot_data = tree.export_graphviz(dt, feature_names=F, class_names=target, filled=True, rounded=True, special_characters=True,out_file=None,)
     graph = graphviz.Source(dot_data)
     graph.format = "png"

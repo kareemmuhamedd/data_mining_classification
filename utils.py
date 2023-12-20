@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import confusion_matrix
 from sklearn import metrics
-from classifier_functions import *
+from data_classification_part.classifier_functions import *
 from utils import *
 
 
@@ -103,18 +103,9 @@ def preprocess_data_for_visualization(data):
 
     return encoded_data
 
-def preprocess_data_for_classifier(df):
-    df.replace([np.inf, -np.inf], np.nan, inplace=True)
-    # inplace=True like i re assigne df = df.replace....
-    # Separate numerical and categorical columns
-    numerical_cols = df.select_dtypes(include=[np.number]).columns
-    categorical_cols = df.select_dtypes(exclude=[np.number]).columns
 
-    # Handling missing values for numerical columns with mean
-    df[numerical_cols] = df[numerical_cols].fillna(df[numerical_cols].mean())
 
-    # Handling missing values for categorical columns with mode
-    df[categorical_cols] = df[categorical_cols].fillna(df[categorical_cols].mode().iloc[0])
+
 
 def preprocess_data_for_classifier(df):
     df.replace([np.inf, -np.inf], np.nan, inplace=True)
